@@ -258,7 +258,6 @@ function criarCard(tarefa) {
     return card;
 }
 
-
 // avança tarefa de status
 function avancarTarefa(id) {
 
@@ -280,25 +279,13 @@ function avancarTarefa(id) {
     mostrarTarefas();
 }
 
-
-// exclui tarefa da lista
+//exclui a tarefa da lista
 function excluirTarefa(id) {
-
-    var novaLista = [];
-
-    for (var i = 0; i < listaDeTarefas.length; i++) {
-
-        if (listaDeTarefas[i].id != id) {
-            novaLista.push(listaDeTarefas[i]);
-        }
-    }
-
-    listaDeTarefas = novaLista;
+    
+    listaDeTarefas = listaDeTarefas.filter(function(tarefa) {
+        return tarefa.id != id;
+    });
 
     // atualiza a tela
     mostrarTarefas();
 }
-
-
-// atualiza a tela
-mostrarTarefas();
