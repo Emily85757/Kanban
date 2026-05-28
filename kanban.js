@@ -47,9 +47,9 @@ botaoFechar.onclick = function () {
 
 // fecha clicando fora do form
 overlay.onclick = function (e) {
-    if (e.target === overlay) {
-        overlay.classList.remove("aberto");
-        campoTitulo.value = "";
+    if (e.target === overlay) {               // pega o elemento do html
+        overlay.classList.remove("aberto");  //adiciona a classe no overlay
+        campoTitulo.value = ""; 
     }
 };
 
