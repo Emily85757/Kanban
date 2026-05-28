@@ -1,15 +1,25 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
+body{
+    background-repeat:repeat-y;
+    background: linear-gradient(100deg,  #ffecd2, #ffd6c0);
+}
+
 
 header h1{
+
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+p {
+    font-family: 'Trebuchet MS', 'Trebuchet', sans-serif;
+}
+
 .kanban{
-    padding: 10px;
-    margin: 10px;
+    padding: 5px;
+    margin: 5px;
     display: flex;
     justify-content: center;
 }
@@ -17,13 +27,14 @@ header h1{
 .colunas{
     margin: 10px;
     width: 320px; 
-    border: 1px solid #999;
-    border-radius: 10px;
-    background-color: #fffff0;
+    border: 1px solid none;
+    border-radius: 10px ;
+    background-color: #fafaf1;
     display: flex;
     flex-direction: column;
     max-height: 70vh;
     height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .area-cards{
@@ -46,7 +57,7 @@ header h1{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     color: #000000;
-    background-color:#faf6bc;   
+    background-color:#fffab2;   
     border-radius: 9px 9px 0 0;
     padding: 8px;
 }
@@ -104,6 +115,8 @@ form select {
     max-width: 100%;
     box-sizing: border-box;
     margin-top: 4px;
+    border-radius: 10px;
+    padding: 7px;
 }
 
 form button {
@@ -117,6 +130,7 @@ form button {
     cursor: pointer;
     display: inline-block;
 }
+
 
 .card {
     display: block; /* visível por padrão */
