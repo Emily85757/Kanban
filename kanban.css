@@ -44,7 +44,7 @@ p {
 
 #faixaazul {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #030303;
+    color:white;
     font-size: 15px;
     text-align: center;
     background-color: #6c9ecf;
@@ -56,8 +56,8 @@ p {
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
-    color: #000000;
-    background-color:#fffab2;   
+    color: white;
+    background-color:#e2dd9b;   
     border-radius: 9px 9px 0 0;
     padding: 8px;
 }
@@ -66,7 +66,7 @@ p {
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
-    color: #000000;
+    color: white;
     background-color: #199676;   /* verde-teal escuro */
     border-radius: 9px 9px 0 0;
     padding: 8px;
@@ -117,6 +117,7 @@ form select {
     margin-top: 4px;
     border-radius: 10px;
     padding: 7px;
+    border: 1px solid gray;
 }
 
 form button {
@@ -165,4 +166,8 @@ form button {
 
 .modal-overlay.aberto #formtaf {
     display: flex;
+}
+
+#fecharForm i {
+    color: white;
 }
