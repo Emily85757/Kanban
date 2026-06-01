@@ -47,9 +47,15 @@ botaoFechar.onclick = function () {
 
 // fecha clicando fora do form
 overlay.onclick = function (e) {
-    if (e.target === overlay) {               // pega o elemento do html
-        overlay.classList.remove("aberto");  //adiciona a classe no overlay
-        campoTitulo.value = ""; 
+
+    // verifica onde o usuário clicou
+    if (e.target === overlay) {
+
+        // remove a classe que deixa o modal aberto
+        overlay.classList.remove("aberto");
+
+        // limpa o campo de título
+        campoTitulo.value = "";
     }
 };
 
@@ -84,38 +90,40 @@ formulario.addEventListener("submit", function (e) {
     overlay.classList.remove("aberto");
 
     // atualiza a tela
-    mostrarTarefas();
+    renderizarTarefas();
 });
 
 
-// mostra as tarefas na tela
-function mostrarTarefas() {
+// renderizar as tarefas na tela
+function renderizarTarefas() {
 
-    // limpa as colunas antes
     colunaAFazer.innerHTML = "";
     colunaFazendo.innerHTML = "";
     colunaConcluido.innerHTML = "";
 
-    for (var i = 0; i < listaDeTarefas.length; i++) {
+    var tarefasAFazer = listaDeTarefas.filter(function (tarefa) {
+        return tarefa.status == "a-fazer";
+    });
 
-        var tarefa = listaDeTarefas[i];
+    var tarefasFazendo = listaDeTarefas.filter(function (tarefa) {
+        return tarefa.status == "fazendo";
+    });
 
-        // cria o card
-        var card = criarCard(tarefa);
+    var tarefasConcluidas = listaDeTarefas.filter(function (tarefa) {
+        return tarefa.status == "concluido";
+    });
 
-        // coloca na coluna certa
-        if (tarefa.status == "a-fazer") {
-            colunaAFazer.appendChild(card);
-        }
+    tarefasAFazer.forEach(function (tarefa) {
+        colunaAFazer.appendChild(criarCard(tarefa));
+    });
 
-        if (tarefa.status == "fazendo") {
-            colunaFazendo.appendChild(card);
-        }
+    tarefasFazendo.forEach(function (tarefa) {
+        colunaFazendo.appendChild(criarCard(tarefa));
+    });
 
-        if (tarefa.status == "concluido") {
-            colunaConcluido.appendChild(card);
-        }
-    }
+    tarefasConcluidas.forEach(function (tarefa) {
+        colunaConcluido.appendChild(criarCard(tarefa));
+    });
 }
 
 
@@ -261,25 +269,24 @@ function criarCard(tarefa) {
 // avança tarefa de status
 function avancarTarefa(id) {
 
-    for (var i = 0; i < listaDeTarefas.length; i++) {
+    var tarefa = listaDeTarefas.find(function (tarefa) {
+        return tarefa.id == id;
+    });
 
-        if (listaDeTarefas[i].id == id) {
+    if (!tarefa) return;
 
-            if (listaDeTarefas[i].status == "a-fazer") {
-                listaDeTarefas[i].status = "fazendo";
-            }
-
-            else if (listaDeTarefas[i].status == "fazendo") {
-                listaDeTarefas[i].status = "concluido";
-            }
-        }
+    if (tarefa.status == "a-fazer") {
+        tarefa.status = "fazendo";
     }
 
-    // atualiza a tela
-    mostrarTarefas();
+    else if (tarefa.status == "fazendo") {
+        tarefa.status = "concluido";
+    }
+
+    renderizarTarefas();
 }
 
-//exclui a tarefa da lista
+// exclui tarefa da lista
 function excluirTarefa(id) {
     
     listaDeTarefas = listaDeTarefas.filter(function(tarefa) {
@@ -287,5 +294,5 @@ function excluirTarefa(id) {
     });
 
     // atualiza a tela
-    mostrarTarefas();
+    renderizarTarefas();
 }
